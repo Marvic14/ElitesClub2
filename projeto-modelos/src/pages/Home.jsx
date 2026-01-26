@@ -5,11 +5,12 @@ export const Home = () => {
             <main className="principal">
                 <section className="banner">
                     <div className="container-title">
-                        <h1 className="title">Aqui você encontra diversas acompanhantes <br/>de forma rápida e totalmente segura.</h1>
+                        <h1 className="title">Aqui você encontra diversas acompanhantes <br/>de forma rápida e
+                            totalmente segura.</h1>
                     </div>
                     <picture>
-                        <source srcset="/img/Mobile-mulherFogo-Background.png" media="(max-width: 768px)" />
-                        <img className="banner-img" src="/img/MulherFogo-Background.png" alt="Banner" />
+                        <source srcSet="/img/Mobile-mulherFogo-Background.png" media="(max-width: 768px)"/>
+                        <img className="banner-img" src="/img/MulherFogo-Background.png" alt="Banner"/>
                     </picture>
                 </section>
 
@@ -22,10 +23,10 @@ export const Home = () => {
                 <section className="segurança">
                     <div className="container-img">
                         <div className="div-image">
-                            <img src="/img/Security-table.svg" alt="Segurança" />
+                            <img src="/img/Security-table.svg" alt="Segurança"/>
                         </div>
                         <div className="div-image">
-                            <img src="/img/CartãoPremium.svg" alt="Premium" />
+                            <img src="/img/CartãoPremium.svg" alt="Premium"/>
                         </div>
                     </div>
                 </section>
@@ -37,10 +38,10 @@ export const Home = () => {
                     </div>
                     <div className="container-img">
                         <div className="div-image">
-                            <img src="/img/Envelope.svg" alt="Envelope" />
+                            <img src="/img/Envelope.svg" alt="Envelope"/>
                         </div>
                         <div className="div-image">
-                            <img src="/img/Seletive-table.svg" alt="Seletiva" />
+                            <img src="/img/Seletive-table.svg" alt="Seletiva"/>
                         </div>
                     </div>
                     <div className="container">
@@ -58,14 +59,14 @@ export const Home = () => {
                     </div>
                     <div className="container-img">
                         <div className="div-image">
-                            <img src="/img/woman1.svg" alt="Modelo 1" />
+                            <img src="/img/woman1.svg" alt="Modelo 1"/>
                             <div className="div-botao">
                                 <h1>Vivencie o<br/> extraordinário</h1>
                                 <button className="botao-dourado">Encontro modelos</button>
                             </div>
                         </div>
                         <div className="div-image">
-                            <img src="/img/woman2.svg" alt="Modelo 2" />
+                            <img src="/img/woman2.svg" alt="Modelo 2"/>
                             <div className="div-botao">
                                 <h1>Sua carreira<br/>no topo!</h1>
                                 <button className="botao-dourado">Torne-se modelo</button>
@@ -73,8 +74,21 @@ export const Home = () => {
                         </div>
                     </div>
                 </section>
+                <section className="contatos">
+                    <div className="container-contatos">
+                        <picture>
+                            <source srcSet="./img/mobile-contatos-bg.png" media="(max-width: 768px)"/>
+                            <img src="./img/background-contatos.svg" alt="Atendimento Exclusivo"
+                                 className="img-suporte"/>
+                        </picture>
+                    </div>
+                    <div className="whatsapp">
+                        <p>fale com nossa equipe agora <i className="bi bi-headset"></i></p>
+                        <img src="./img/WhatsApp.png" alt=""/>
+                    </div>
+                </section>
 
             </main>
         </>
-);
+    );
 }
