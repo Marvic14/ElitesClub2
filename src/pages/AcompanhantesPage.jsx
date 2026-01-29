@@ -80,9 +80,20 @@ export const AcompanhantesPage = () => {
                             <CardModelo key={modelo.id} modelo={modelo} />
                         ))
                     ) : (
-                        <p style={{color: '#fff', textAlign: 'center', width: '100%', padding: '50px'}}>
-                            Nenhuma modelo encontrada para esta categoria.
-                        </p>
+                        <div style={{
+                            gridColumn: "1 / -1",
+                            width: '100%',
+                            minHeight: "200px",
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            flexDirection: 'column' //
+                        }}>
+                            <p style={{color: '#fff', textAlign: 'center', padding: '50px'}}>
+                                Nenhum resultado encontrado para esta categoria.<br/>Tente uma nova combinação.
+                                
+                            </p>
+                        </div>
                     )}
                 </div>
 
