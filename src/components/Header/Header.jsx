@@ -1,6 +1,12 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export const Header = ({ menuAtivo, setMenuAtivo }) => {
+    const location = useLocation();
+    useEffect(() => {
+        setMenuAtivo(false);
+    }, [location, setMenuAtivo]);
+
     return (
         <>
             <header className="cabecalho">
@@ -23,7 +29,6 @@ export const Header = ({ menuAtivo, setMenuAtivo }) => {
                 </nav>
             </header>
 
-            {/* O Aside agora mora aqui dentro! */}
             <aside className={`mobile-menu ${menuAtivo ? 'active' : ''}`}>
                 <ul>
                     <li><Link to="/" className="nav-item">Início</Link></li>
