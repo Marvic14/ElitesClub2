@@ -53,7 +53,7 @@ export const Home = () => {
                 </section>
 
                 {/* --- SEÇÃO DE CARDS (VIVENCIE O EXTRAORDINÁRIO) --- */}
-                <section className="card-section">
+                <section className="card-section"> 
                     <div className="container">
                         <h1 className="titulo-dourado title">💎 Conquiste já seu objetivo</h1>
                     </div>
