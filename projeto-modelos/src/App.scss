@@ -838,8 +838,10 @@ aside{
   }
 }
 
-/*----- PAG ACOMPANHANTES (ESTILO UNIFICADO) */
-
+/*----- @@@ PAGINA ACOMPANHANTES (ESTILO UNIFICADO) */
+.bg-acompanhantes{
+  background-color: rgba(0, 0, 0, 0.6);
+}
 .grid-modelos {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -848,11 +850,11 @@ aside{
 
   // Responsividade inteligente
   @media (max-width: 992px) { grid-template-columns: repeat(2, 1fr); }
-  @media (max-width: 650px) { grid-template-columns: 1fr; }
+  @media (max-width: 480px) {margin: 0 auto; grid-template-columns: 1fr; }
 }
 
 .card-modelo {
-  background: rgba(13, 7, 5, 0.8); // Marrom profundo translúcido
+  background: rgba(13, 7, 5, 0.8);
   border: 1px solid #3d2b1f;
   border-radius: 8px;
   position: relative;
@@ -861,21 +863,13 @@ aside{
 
   &:hover {
     transform: translateY(-5px);
-    border-color: #d4af37; // Brilho dourado no hover
+    border-color: #d4af37;
   }
 
-  // Estilo para quando você colocar a tag <img>
-  img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    border-bottom: 2px solid #3d2b1f;
-  }
-
-  // Estilo para a caixa cinza de teste
+  // A MOLDURA: Agora ela controla a imagem
   .image-placeholder {
     width: 100%;
-    height: 350px;
+    aspect-ratio: 4/5;
     background: #1a1a1a;
     display: flex;
     align-items: center;
@@ -883,6 +877,21 @@ aside{
     color: #444;
     font-weight: bold;
     border-bottom: 2px solid #3d2b1f;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%; // Faz a imagem ocupar todo o espaço da moldura
+      object-fit: cover; // Corta o excesso sem achatar
+      object-position: top; // Prioriza o rosto da modelo no corte
+      transition: transform 0.5s ease;
+      display: block; // Remove espaços vazios estranhos
+    }
+  }
+
+  &:hover .image-placeholder img {
+    transform: scale(1.1); // O efeito de zoom que dá o toque de luxo
   }
 
   .badge-categoria {
@@ -913,8 +922,7 @@ aside{
       font-size: 0.9rem;
       margin-bottom: 10px;
     }
-
-    /* Coloque o estilo das estrelas aqui dentro! */
+    /* Coloquei o estilo das estrelas aqui dentro! */
     .estrelas {
       color: #ff9d00 !important; // O !important garante que essa cor vença qualquer conflito
       margin-bottom: 15px;
@@ -941,6 +949,7 @@ aside{
   }
 }
 
+
 /* ------- FILTROS STYLE */
 
 .filtros-container {
@@ -959,8 +968,53 @@ aside{
     flex-wrap: wrap;
 
     @media (max-width: 850px) {
-      flex-direction: column;
-      align-items: flex-start;
+      flex-direction: column; // Empilha localização e gênero
+      align-items: flex-start; // Alinha tudo à esquerda
+      padding: 10px 0;
+      width: 100%;
+      gap: 25px; // Espaço maior entre os blocos para não embolar
+    }
+  }
+
+  .opcoes-genero {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap; // Se a tela for MUITO pequena, o trans desce sozinho
+
+    @media (max-width: 768px) {
+      width: 100%;
+      justify-content: flex-start;
+      gap: 10px;
+
+      label {
+        background: rgba(212, 175, 55, 0.1); // Um fundo leve dourado
+        padding: 8px 12px;
+        border-radius: 8px;
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+    }
+  }
+
+  .localizacao-box {
+    @media (max-width: 768px) {
+      width: 100%;
+
+      .input-fake {
+        width: 100%; // Faz a barra de busca de cidade ocupar tudo no mobile
+        input {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .divisor-vertical {
+    @media (max-width: 768px) {
+      display: none; // No mobile, o traço vertical atrapalha
     }
   }
 
@@ -1034,3 +1088,100 @@ aside{
     }
   }
 }
+
+/* ------------------ FILTRO MOBILE ABRIR FECHAR -----------------*/
+
+.filtros-container {
+  background: rgba(20, 10, 5, 0.95);
+  border-bottom: 1px solid #d4af37;
+  padding: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  .mobile-filter-trigger {
+    display: none; // Escondido no PC
+    width: 100%;
+    background: linear-gradient(45deg, #d4af37, #f2d06b);
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-filter-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .filtro-wrapper {
+      display: none; // Esconde os filtros por padrão no mobile
+      flex-direction: column;
+      padding-top: 20px;
+      gap: 20px;
+    }
+
+    &.open .filtro-wrapper {
+      display: flex; // Mostra quando clicamos no botão
+    }
+
+    .divisor-vertical {
+      display: none; // Tira o risco vertical no mobile
+    }
+  }
+}
+
+/* Paginação do site */
+
+/* Ajuste pontual para correção de layout */
+@media(max-width: 349px) {
+  .paginacao{
+    padding: 0 15px;
+  }
+}
+
+
+.paginacao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 50px 0;
+
+  button {
+    background: linear-gradient(45deg, #d4af37, #f2d06b);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &:disabled {
+      background: #333;
+      color: #777;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+    }
+  }
+
+  .info-paginas {
+    color: #fff;
+    font-size: 0.9rem;
+    strong { color: #d4af37; }
+  }
+}
+

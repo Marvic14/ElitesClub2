@@ -1,14 +1,22 @@
 export const CardModelo = ({ modelo }) => {
     return (
         <div className="card-modelo">
+            {/* Badge de categoria */}
             <div className="badge-categoria">{modelo.categoria}</div>
-            <div className="image-placeholder">FOTO</div>
+
+            {/* Container da imagem com a URL de teste que você escolheu */}
+            <div className="image-placeholder">
+                <img
+                    src="https://www.forummodel.com.br/wp-content/webp-express/webp-images/uploads/2022/08/modelo-aprovada-plus-size.jpg.webp"
+                    alt={modelo.nome}
+                    loading="lazy"
+                />
+            </div>
 
             <div className="modelo-info">
                 <h3>{modelo.nome}, {modelo.idade}</h3>
                 <p>{modelo.cidade}</p>
 
-                {/* CERTIFIQUE-SE DE QUE A CLASSE É EXATAMENTE "estrelas" */}
                 <div className="estrelas">★★★★★</div>
 
                 <button className="btn-perfil">Ver Perfil</button>
