@@ -62,7 +62,7 @@ export const Home = () => {
                             <img src="/img/woman1.svg" alt="Modelo 1"/>
                             <div className="div-botao">
                                 <h1>Vivencie o<br/> extraordinário</h1>
-                                <button className="botao-dourado">Encontro modelos</button>
+                                <button className="botao-dourado">Encontre modelos</button>
                             </div>
                         </div>
                         <div className="div-image">
