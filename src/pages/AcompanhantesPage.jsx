@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Filters } from '../components/Filters';
 import { CardModelo } from '../components/CardModelo';
 import { modelosData } from '../data/modelos';
@@ -15,10 +15,6 @@ export const AcompanhantesPage = () => {
         'SIMPLE': 4,
         'BASIC': 5 
     };
-    // Reset de página sempre que filtrar
-    useEffect(() => {
-        setPaginaAtual(1);
-    }, [filtrosAtivos]);
 
     const handleFilterChange = (tipo) => {
         setFiltrosAtivos((prev) => {
@@ -37,6 +33,7 @@ export const AcompanhantesPage = () => {
             }
             return prev;
         });
+        setPaginaAtual(1); // Reset direto aqui!
     };
 
 // ... no return, passe o estado filtrosAtivos para o componente Filters:
@@ -91,7 +88,7 @@ export const AcompanhantesPage = () => {
                         }}>
                             <p style={{color: '#fff', textAlign: 'center', padding: '50px'}}>
                                 Nenhum resultado encontrado para esta categoria.<br/>Tente uma nova combinação.
-                                
+
                             </p>
                         </div>
                     )}
