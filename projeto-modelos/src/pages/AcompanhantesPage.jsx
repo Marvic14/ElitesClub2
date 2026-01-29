@@ -13,7 +13,7 @@ export const AcompanhantesPage = () => {
         'VIP': 2,
         'ESSENCIAL': 3,
         'SIMPLE': 4,
-        'BASIC': 5
+        'BASIC': 5 
     };
     // Reset de página sempre que filtrar
     useEffect(() => {
