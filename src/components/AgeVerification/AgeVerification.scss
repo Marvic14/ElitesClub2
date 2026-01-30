@@ -1,0 +1,100 @@
+.modal-idade-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;   // Ocupa 100% da largura da janela
+  height: 100vh;  // Ocupa 100% da altura da janela
+
+  // Visual de luxo: fundo quase opaco com desfoque intenso
+  background: rgba(0, 0, 0, 0.98);
+  backdrop-filter: blur(15px);
+
+  // Centralização perfeita
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // Z-index altíssimo para ficar na frente de qualquer Header ou Banner
+  z-index: 999999;
+  padding: 20px;
+
+  .modal-idade-content {
+    background: #0d0705;
+    border: 1px solid #bf953f;
+    padding: 40px;
+    max-width: 500px;
+    width: 100%; // Garante responsividade em celulares
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 0 50px rgba(191, 149, 63, 0.3);
+    position: relative;
+    z-index: 1000000;
+
+    .modal-logo {
+      width: 180px; // Aumentei um pouco para destaque
+      margin-bottom: 25px;
+      filter: drop-shadow(0 0 10px rgba(191, 149, 63, 0.2));
+    }
+
+    h2 {
+      color: #fff;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    p {
+      color: #c4a484;
+      line-height: 1.8;
+      margin-bottom: 35px;
+      font-size: 1rem;
+    }
+
+    .modal-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      .btn-confirmar {
+        // Gradiente dourado premium
+        background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728);
+        border: none;
+        padding: 18px;
+        font-weight: 800;
+        color: #000;
+        cursor: pointer;
+        border-radius: 4px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(191, 149, 63, 0.4);
+          filter: brightness(1.1);
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
+      }
+
+      .btn-sair {
+        color: #888;
+        text-decoration: none;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: color 0.3s;
+        margin-top: 10px;
+
+        &:hover {
+          color: #bf953f;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

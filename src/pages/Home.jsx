@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 export const Home = () => {
 
     return(
@@ -47,13 +49,15 @@ export const Home = () => {
                     <div className="container">
                         <h1 className="titulo-dourado">Preparado para acessar <br/>um ambiente exclusivo?</h1>
                         <div className="div-button">
-                            <button className="botao-dourado">Conheça as modelos</button>
+                            <Link to="/acompanhantes" className="botao-dourado" style={{ textDecoration: 'none', display: 'inline-block' }}>
+                                Conheça as modelos
+                            </Link>
                         </div>
                     </div>
                 </section>
 
                 {/* --- SEÇÃO DE CARDS (VIVENCIE O EXTRAORDINÁRIO) --- */}
-                <section className="card-section"> 
+                <section className="card-section">
                     <div className="container">
                         <h1 className="titulo-dourado title">💎 Conquiste já seu objetivo</h1>
                     </div>
@@ -62,7 +66,9 @@ export const Home = () => {
                             <img src="/img/woman1.svg" alt="Modelo 1"/>
                             <div className="div-botao">
                                 <h1>Vivencie o<br/> extraordinário</h1>
-                                <button className="botao-dourado">Encontre modelos</button>
+                                <Link to="/acompanhantes" className="botao-dourado" style={{ textDecoration: 'none', display: 'inline-block' }}>
+                                    Encontre Modelos
+                                </Link>
                             </div>
                         </div>
                         <div className="div-image">

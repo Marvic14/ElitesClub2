@@ -14,8 +14,19 @@ export const CardModelo = ({ modelo }) => {
             </div>
 
             <div className="modelo-info">
-                <h3>{modelo.nome}, {modelo.idade}</h3>
-                <p>{modelo.cidade}</p>
+                <div className="modelo-header">
+                    <h3>{modelo.nome}, {modelo.idade} anos</h3>
+                    <a
+                        href={`https://wa.me/${modelo.whatsapp}?text=${encodeURIComponent("Olá, te encontrei por meio do site ElitesClub e gostaria de mais informações sobre seus serviços.")}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="link-whatsapp"
+                    >
+                        <img src="/img/WhatsApp.png" alt="ícone WhatsApp" />
+                    </a>
+                </div>
+
+                <p><i className="bi bi-geo-alt-fill"></i> {modelo.cidade}</p>
 
                 <div className="estrelas">★★★★★</div>
 
