@@ -1,4 +1,5 @@
 .modal-idade-overlay {
+  font-family: "Arial", sans-serif;
   position: fixed;
   top: 0;
   left: 0;
@@ -11,75 +12,113 @@
   justify-content: center;
   z-index: 999999;
   padding: 20px;
+  box-sizing: border-box;
 }
 .modal-idade-overlay .modal-idade-content {
   background: #0d0705;
   border: 1px solid #bf953f;
-  padding: 40px;
-  max-width: 500px;
-  width: 100%;
   text-align: center;
   border-radius: 8px;
   box-shadow: 0 0 50px rgba(191, 149, 63, 0.3);
   position: relative;
   z-index: 1000000;
+  margin: auto;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 600px;
+  padding: 60px 40px;
 }
 .modal-idade-overlay .modal-idade-content .modal-logo {
-  width: 180px;
-  margin-bottom: 25px;
+  width: 250px;
+  height: auto;
+  margin-bottom: 30px;
   filter: drop-shadow(0 0 10px rgba(191, 149, 63, 0.2));
 }
 .modal-idade-overlay .modal-idade-content h2 {
   color: #fff;
-  font-size: 1.6rem;
-  margin-bottom: 20px;
-  letter-spacing: 2px;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  letter-spacing: 3px;
   font-weight: 700;
   text-transform: uppercase;
+  line-height: 1.2;
 }
 .modal-idade-overlay .modal-idade-content p {
   color: #c4a484;
   line-height: 1.8;
-  margin-bottom: 35px;
-  font-size: 1rem;
+  margin-bottom: 40px;
+  font-size: 1.1rem;
 }
 .modal-idade-overlay .modal-idade-content .modal-buttons {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
+  width: 100%;
 }
 .modal-idade-overlay .modal-idade-content .modal-buttons .btn-confirmar {
   background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728);
   border: none;
-  padding: 18px;
+  padding: 20px;
   font-weight: 800;
   color: #000;
   cursor: pointer;
   border-radius: 4px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  font-size: 1rem;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 .modal-idade-overlay .modal-idade-content .modal-buttons .btn-confirmar:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(191, 149, 63, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(191, 149, 63, 0.5);
   filter: brightness(1.1);
-}
-.modal-idade-overlay .modal-idade-content .modal-buttons .btn-confirmar:active {
-  transform: translateY(0);
 }
 .modal-idade-overlay .modal-idade-content .modal-buttons .btn-sair {
   color: #888;
   text-decoration: none;
-  font-size: 0.85rem;
-  cursor: pointer;
+  font-size: 0.9rem;
   transition: color 0.3s;
-  margin-top: 10px;
 }
 .modal-idade-overlay .modal-idade-content .modal-buttons .btn-sair:hover {
   color: #bf953f;
-  text-decoration: underline;
+}
+@media (max-width: 768px) {
+  .modal-idade-overlay .modal-idade-content {
+    width: 95%;
+    padding: 40px 20px;
+    max-width: 450px;
+  }
+  .modal-idade-overlay .modal-idade-content .modal-logo {
+    width: 200px;
+    margin-bottom: 20px;
+  }
+  .modal-idade-overlay .modal-idade-content h2 {
+    font-size: 1.4rem !important;
+  }
+  .modal-idade-overlay .modal-idade-content p {
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+  }
+  .modal-idade-overlay .modal-idade-content .btn-confirmar {
+    padding: 16px;
+    font-size: 0.85rem !important;
+    letter-spacing: 1px;
+  }
+}
+@media (max-width: 459px) {
+  .modal-idade-overlay .modal-idade-content h2 {
+    font-size: 1rem !important;
+  }
+  .modal-idade-overlay .modal-idade-content p {
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+  }
+  .modal-idade-overlay .modal-idade-content .btn-confirmar {
+    padding: 16px;
+    font-size: 0.65rem !important;
+    letter-spacing: 1px;
+  }
 }
 
 /*# sourceMappingURL=AgeVerification.css.map */

@@ -8,12 +8,24 @@ export const AgeVerification = () => {
         const verificado = localStorage.getItem('maiorDe18');
         if (!verificado) {
             setVisivel(true);
+            // TRAVA: Impede o scroll ao abrir
+            document.body.style.overflow = 'hidden';
         }
+
+        // Cleanup: Garante que o scroll volte se o componente for removido
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
     }, []);
 
     const confirmarIdade = () => {
         localStorage.setItem('maiorDe18', 'true');
         setVisivel(false);
+        // LIBERA: Volta o scroll ao aceitar
+        document.body.style.overflow = 'auto';
+
+        // OPCIONAL: Garante que ele comece no topo da home
+        window.scrollTo(0, 0);
     };
 
     if (!visivel) return null;
