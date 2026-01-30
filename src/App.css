@@ -366,95 +366,107 @@ aside {
   box-shadow: 1px 1px 4px #C5A059, 1px 1px 50px #c89a2b;
 }
 
-.rodape {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 0;
-  margin-top: 20vh;
-}
-.rodape a {
-  color: #C5A059;
-  text-shadow: 1px 1px 1px #000;
-  font-weight: bold;
-  text-decoration: none;
-}
-.rodape a:hover {
+/* ---------------------  FOOTER,  RODAPÉ DA PÁGINA ----------------------------------*/
+.footer-premium {
+  background: linear-gradient(to bottom, #0d0705, #000);
+  border-top: 1px solid #3d2b1f;
+  padding: 60px 20px 20px;
   color: #fff;
-  text-shadow: 1px 1px 3px #c89a2b, 1px 1px 50px #e6be5c, -1px -1px 100px #e6be5c;
 }
-.rodape .log {
-  position: relative;
-  margin: 0;
+.footer-premium .footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr;
+  gap: 40px;
+}
+.footer-premium .footer-container .branding .footer-logo {
+  width: 250px;
+  height: auto;
+}
+@media (max-width: 768px) {
+  .footer-premium .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+.footer-premium .footer-column h3 {
+  color: #bf953f;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.footer-premium .footer-column ul {
+  list-style: none;
   padding: 0;
 }
-.rodape p {
-  font-size: 30px;
+.footer-premium .footer-column ul li {
+  color: #c4a484;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  cursor: default;
 }
-.rodape span {
-  display: block;
-  padding: 30px 0 0 0;
-  font-size: 15px;
+.footer-premium .footer-column p, .footer-premium .footer-column span {
+  color: #c4a484;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
 }
-.rodape .footer-div {
-  width: 100%;
-  position: relative;
+.footer-premium .footer-column .trust-icons, .footer-premium .footer-column .payment-methods {
   display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-.rodape .footer-div .item {
-  display: flex;
+  gap: 12px;
   align-items: center;
-  justify-content: center;
-  gap: 20px;
+  margin-bottom: 15px;
 }
-.rodape .footer-div .item li {
-  list-style-type: none;
+@media (max-width: 768px) {
+  .footer-premium .footer-column .trust-icons, .footer-premium .footer-column .payment-methods {
+    justify-content: center;
+  }
 }
-.rodape .footer-div::before {
-  padding-bottom: 2px;
-  content: "";
-  position: absolute;
-  bottom: -30px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(to right, #C5A059 40%, #C5A059 60%);
-  border-radius: 50%/100%;
+.footer-premium .footer-column .trust-icons i, .footer-premium .footer-column .payment-methods i {
+  font-size: 1.4rem;
+  color: #bf953f;
+  min-width: 25px;
 }
-.rodape .footer-div::after {
-  content: "";
-  position: absolute;
-  top: -30px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(to right, #C5A059 40%, #C5A059 60%);
-  border-radius: 50%/100%;
+.footer-premium .footer-column .trust-icons span, .footer-premium .footer-column .trust-icons p, .footer-premium .footer-column .payment-methods span, .footer-premium .footer-column .payment-methods p {
+  font-size: 0.9rem !important;
+  font-weight: 400;
 }
-.rodape .redes-div {
+.footer-premium .footer-column .trust-icons img, .footer-premium .footer-column .payment-methods img {
+  width: 35px;
+  height: auto;
+}
+.footer-premium .footer-column .footer-socials {
   display: flex;
-  justify-content: center;
-  gap: 13px;
-  margin: 0;
-  padding: 0;
+  gap: 15px;
+  margin-top: 15px;
 }
-.rodape .redes-div i {
-  margin: 10px 0;
-  font-size: 25px;
-  color: #F2C884;
+.footer-premium .footer-column .footer-socials i {
+  font-size: 1.5rem;
+  color: #bf953f;
   cursor: pointer;
-  border: 1px solid #C5A059;
-  padding: 4px 6.5px;
-  border-radius: 100%;
+  transition: transform 0.2s;
 }
-.rodape .redes-div i:hover {
-  background: linear-gradient(#C5A059 30%, #F2C884 70%, #C5A059 100%);
-  color: #fff;
-  box-shadow: 1px 1px 4px #C5A059, 1px 1px 50px #c89a2b;
+.footer-premium .footer-column .footer-socials i:hover {
+  transform: translateY(-3px);
+}
+@media (max-width: 768px) {
+  .footer-premium .footer-column .footer-socials {
+    justify-content: center;
+  }
+}
+.footer-premium .footer-column .mt-20 {
+  margin-top: 30px;
+  display: block;
+}
+.footer-premium .footer-bottom {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(191, 149, 63, 0.1);
+  text-align: center;
+  font-size: 0.8rem;
+  color: #666;
 }
 
 /* ------------ CONFIGURAÇÃO MOBILE ------------*/
@@ -675,9 +687,12 @@ aside {
     font-size: 12px;
   }
 }
-@media (max-width: 338px) {
+@media (max-width: 348px) {
   .web-aplication .banner h1 {
     font-size: 18px;
+  }
+  .whatsapp p {
+    font-size: 14px;
   }
 }
 /*----- @@@ PAGINA ACOMPANHANTES (ESTILO UNIFICADO) */
@@ -755,15 +770,68 @@ aside {
   padding: 20px;
   text-align: left;
 }
-.card-modelo .modelo-info h3 {
+.card-modelo .modelo-info .icon-rainbow {
+  /* As 7 cores da bandeira */
+  background: linear-gradient(to bottom, #FF0000 0%, #FF8E00 16.6%, #FFFF00 33.3%, #008E00 50%, #0000FF 66.6%, #440082 83.3%, #8E008E 100%);
+  /* Truque para a cor ficar só no ícone */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  font-weight: bold;
+  /* Um brilho suave para não sumir no fundo preto */
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.2));
+}
+.card-modelo .modelo-info {
+  /* NOVO: Container para alinhar Nome e Whats */
+}
+.card-modelo .modelo-info .modelo-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-modelo .modelo-info .modelo-header h3 {
   color: #fff;
   font-size: 1.2rem;
-  margin-bottom: 5px;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  display: inline-block;
+}
+.card-modelo .modelo-info .modelo-header {
+  /* Estilo para o novo link */
+}
+.card-modelo .modelo-info .modelo-header .link-whatsapp {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+.card-modelo .modelo-info .modelo-header .link-whatsapp:hover {
+  transform: scale(1.1); /* O efeito de aumentar agora fica no link todo */
+}
+.card-modelo .modelo-info .modelo-header {
+  /* Seletor simplificado para a imagem */
+}
+.card-modelo .modelo-info .modelo-header img {
+  width: 24px;
+  height: 24px;
+  display: block;
+  cursor: pointer;
+}
+.card-modelo .modelo-info .modelo-header {
+  /* Se você quiser que APENAS o ícone aumente no hover, use assim: */
+}
+.card-modelo .modelo-info .modelo-header img:hover {
+  transform: translateY(2px) scale(1);
 }
 .card-modelo .modelo-info p {
   color: #c4a484;
   font-size: 0.9rem;
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 .card-modelo .modelo-info {
   /* Coloquei o estilo das estrelas aqui dentro! */
@@ -791,11 +859,59 @@ aside {
 }
 
 /* ------- FILTROS STYLE */
+.aviso-expansao {
+  /* 1. Layout Base (Mobile) */
+  width: 90%; /* Garante 5% de respiro em cada lado no celular */
+  max-width: 800px; /* Não deixa esticar demais no PC */
+  margin: 20px auto; /* Centraliza horizontalmente */
+  padding: 20px; /* Respiro interno menor no mobile */
+  background: rgba(15, 15, 15, 0.95);
+  border: 1px solid rgba(191, 149, 63, 0.3);
+  border-left: 4px solid #bf953f;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  /* Garante que o padding não "empurre" a largura para fora */
+  box-sizing: border-box;
+}
+
+/* 2. Ajustes para Telas Maiores (Desktop) */
+@media (min-width: 768px) {
+  .aviso-expansao {
+    padding: 40px; /* Mais luxo e espaço no computador */
+    margin: 40px auto; /* Mais distanciamento dos filtros */
+  }
+  .aviso-expansao p {
+    font-size: 1.2rem; /* Texto levemente maior no PC */
+  }
+}
+/* Estilo do texto e ícone */
+.aviso-expansao i {
+  color: #bf953f;
+  font-size: 2rem;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.aviso-expansao p {
+  color: #fff;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.aviso-expansao .sub-texto {
+  display: block;
+  margin-top: 15px;
+  font-size: 0.85rem;
+  color: #888;
+  font-style: italic;
+}
+
 .filtros-container {
   background: #140a06;
   border: 1px solid #3d2b1f;
   padding: 15px 30px;
-  margin: 20px auto;
+  margin: 40px auto 0 auto;
   max-width: 1200px;
   border-radius: 8px;
 }

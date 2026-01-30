@@ -841,6 +841,7 @@ aside{
   background-color: rgba(0, 0, 0, 0.6);
 
 }
+
 .grid-modelos {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -910,6 +911,31 @@ aside{
     padding: 20px;
     text-align: left;
 
+    .icon-rainbow {
+      /* As 7 cores da bandeira */
+      background: linear-gradient(
+                      to bottom,
+                      #FF0000 0%,
+                      #FF8E00 16.6%,
+                      #FFFF00 33.3%,
+                      #008E00 50%,
+                      #0000FF 66.6%,
+                      #440082 83.3%,
+                      #8E008E 100%
+      );
+
+      /* Truque para a cor ficar só no ícone */
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      display: inline-block;
+      font-weight: bold;
+      /* Um brilho suave para não sumir no fundo preto */
+      filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.2));
+    }
+
+    
     /* NOVO: Container para alinhar Nome e Whats */
     .modelo-header {
       display: flex;
@@ -989,12 +1015,63 @@ aside{
 
 
 /* ------- FILTROS STYLE */
+.aviso-expansao {
+  /* 1. Layout Base (Mobile) */
+  width: 90%;             /* Garante 5% de respiro em cada lado no celular */
+  max-width: 800px;       /* Não deixa esticar demais no PC */
+  margin: 20px auto;      /* Centraliza horizontalmente */
+  padding: 20px;          /* Respiro interno menor no mobile */
+
+  background: rgba(15, 15, 15, 0.95);
+  border: 1px solid rgba(191, 149, 63, 0.3);
+  border-left: 4px solid #bf953f;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+  /* Garante que o padding não "empurre" a largura para fora */
+  box-sizing: border-box;
+}
+
+/* 2. Ajustes para Telas Maiores (Desktop) */
+@media (min-width: 768px) {
+  .aviso-expansao {
+    padding: 40px;      /* Mais luxo e espaço no computador */
+    margin: 40px auto;  /* Mais distanciamento dos filtros */
+  }
+
+  .aviso-expansao p {
+    font-size: 1.2rem;  /* Texto levemente maior no PC */
+  }
+}
+
+/* Estilo do texto e ícone */
+.aviso-expansao i {
+  color: #bf953f;
+  font-size: 2rem;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.aviso-expansao p {
+  color: #fff;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.aviso-expansao .sub-texto {
+  display: block;
+  margin-top: 15px;
+  font-size: 0.85rem;
+  color: #888;
+  font-style: italic;
+}
 
 .filtros-container {
   background: #140a06;
   border: 1px solid #3d2b1f;
   padding: 15px 30px;
-  margin: 20px auto;
+  margin: 40px auto 0 auto;
   max-width: 1200px;
   border-radius: 8px;
 

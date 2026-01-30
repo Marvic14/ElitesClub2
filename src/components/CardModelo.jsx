@@ -1,4 +1,25 @@
 export const CardModelo = ({ modelo }) => {
+// 1. Função de tratamento (Consertada)
+    const obterEstiloGenero = (m) => {
+        if (m.trans) return {
+            icone: "bi-gender-trans",
+            classe: "icon-rainbow", // Classe especial para o colorido
+            label: "Trans"
+        };
+        if (m.genero === "masculino") return {
+            icone: "bi-gender-male",
+            cor: "#00d2ff",
+            label: "Homem"
+        };
+        return {
+            icone: "bi-gender-female",
+            cor: "#ff74a4",
+            label: "Mulher"
+        };
+    };
+
+    const estilo = obterEstiloGenero(modelo);
+
     return (
         <div className="card-modelo">
             {/* Badge de categoria */}
@@ -15,7 +36,12 @@ export const CardModelo = ({ modelo }) => {
 
             <div className="modelo-info">
                 <div className="modelo-header">
-                    <h3>{modelo.nome}, {modelo.idade} anos</h3>
+                    <h3>{/* O ÍCONE DINÂMICO AQUI */}
+                        <i
+                            className={`bi ${estilo.icone} ${estilo.classe || ''}`}
+                            style={{ color: estilo.cor, marginRight: '8px' }}
+                            title={estilo.label}
+                        ></i>{modelo.nome}, {modelo.idade} anos</h3>
                     <a
                         href={`https://wa.me/${modelo.whatsapp}?text=${encodeURIComponent("Olá, te encontrei por meio do site ElitesClub e gostaria de mais informações sobre seus serviços.")}`}
                         target="_blank"

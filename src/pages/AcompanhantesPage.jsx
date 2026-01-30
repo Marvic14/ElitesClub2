@@ -4,111 +4,90 @@ import { CardModelo } from '../components/CardModelo';
 import { modelosData } from '../data/modelos';
 
 export const AcompanhantesPage = () => {
-    // 1. O segredo: Começamos com Feminino para bater com o que o usuário vê ao abrir
     const [filtrosAtivos, setFiltrosAtivos] = useState(["feminino"]);
+    const [cidadeUsuario, setCidadeUsuario] = useState('');
     const [paginaAtual, setPaginaAtual] = useState(1);
+
     const itensPorPagina = 6;
     const pesosHierarquia = {
-        'ELITE': 1,
-        'VIP': 2,
-        'ESSENCIAL': 3,
-        'SIMPLE': 4,
-        'BASIC': 5 
+        'ELITE': 1, 'VIP': 2, 'ESSENCIAL': 3, 'SIMPLE': 4, 'BASIC': 5
     };
 
-    const handleFilterChange = (tipo) => {
+    const handleFilterChange = (tipo, valor) => {
+        if (tipo === 'localizacao') {
+            setCidadeUsuario(valor);
+            setPaginaAtual(1);
+            return;
+        }
+
         setFiltrosAtivos((prev) => {
             if (tipo === 'transgenero') {
-                return prev.includes('transgenero')
-                    ? prev.filter(i => i !== 'transgenero')
-                    : [...prev, 'transgenero'];
+                return prev.includes('transgenero') ? prev.filter(i => i !== 'transgenero') : [...prev, 'transgenero'];
             }
-
-            // Se clicar em Masculino, remove Feminino do array. Se clicar em Feminino, remove Masculino.
-            if (tipo === 'feminino') {
-                return ['feminino', ...prev.filter(i => i === 'transgenero')];
-            }
-            if (tipo === 'masculino') {
-                return ['masculino', ...prev.filter(i => i === 'transgenero')];
-            }
+            if (tipo === 'feminino') return ['feminino', ...prev.filter(i => i === 'transgenero')];
+            if (tipo === 'masculino') return ['masculino', ...prev.filter(i => i === 'transgenero')];
             return prev;
         });
-        setPaginaAtual(1); // Reset direto aqui!
+        setPaginaAtual(1);
     };
 
-// ... no return, passe o estado filtrosAtivos para o componente Filters:
-    <Filters onFilterChange={handleFilterChange} filtrosAtivos={filtrosAtivos} />
+    // --- LÓGICA DE FILTRAGEM ---
+    const filtrar = (usarCidade) => {
+        return modelosData.filter(modelo => {
+            const generoAlvo = filtrosAtivos.includes('masculino') ? 'masculino' : 'feminino';
+            const matchBase = modelo.genero === generoAlvo && modelo.trans === filtrosAtivos.includes('transgenero');
 
-    // --- 2. FILTRAGEM DE COMBINAÇÃO EXATA ---
-    const modelosFiltradosTotal = modelosData.filter(modelo => {
-        const querMasculino = filtrosAtivos.includes('masculino');
-        const querTrans = filtrosAtivos.includes('transgenero');
-        const generoAlvo = querMasculino ? 'masculino' : 'feminino';
-        return modelo.genero === generoAlvo && modelo.trans === querTrans;
-    }).sort((a, b) => {
-        // 2. Normalização dos dados (Remove espaços e ignora maiúsculas/minúsculas)
-        const catA = String(a.categoria || '').trim().toUpperCase();
-        const catB = String(b.categoria || '').trim().toUpperCase();
+            if (usarCidade && cidadeUsuario) {
+                const termoBusca = cidadeUsuario.toLowerCase();
+                const cidadeModelo = modelo.cidade.toLowerCase();
+                return matchBase && (termoBusca.includes(cidadeModelo) || cidadeModelo.includes(termoBusca));
+            }
+            return matchBase;
+        });
+    };
 
-        const pesoA = pesosHierarquia[catA] || 99;
-        const pesoB = pesosHierarquia[catB] || 99;
+    let modelosFiltrados = filtrar(true); // Tenta na cidade
+    const encontrouNaCidade = modelosFiltrados.length > 0;
 
-        // 3. A Comparação: Quem tem o menor peso (1) sobe para o topo
-        return pesoA - pesoB;
-    });
-    // --- 3. LÓGICA DE PAGINAÇÃO ---
-    const totalPaginas = Math.ceil(modelosFiltradosTotal.length / itensPorPagina);
-    const indiceUltimoItem = paginaAtual * itensPorPagina;
-    const indicePrimeiroItem = indiceUltimoItem - itensPorPagina;
-    const modelosExibidos = modelosFiltradosTotal.slice(indicePrimeiroItem, indiceUltimoItem);
+    if (!encontrouNaCidade) {
+        modelosFiltrados = filtrar(false); // Opção B: Mostra todas se não achar na cidade
+    }
+
+    // Ordenação
+    modelosFiltrados.sort((a, b) => (pesosHierarquia[a.categoria?.toUpperCase()] || 99) - (pesosHierarquia[b.categoria?.toUpperCase()] || 99));
+
+    // Paginação
+    const totalPaginas = Math.ceil(modelosFiltrados.length / itensPorPagina);
+    const modelosExibidos = modelosFiltrados.slice((paginaAtual - 1) * itensPorPagina, paginaAtual * itensPorPagina);
 
     return (
         <main className="bg-acompanhantes">
-            {/* Passamos apenas a função, já que seu Filter do Github não usa a prop filtrosAtivos */}
             <Filters onFilterChange={handleFilterChange} filtrosAtivos={filtrosAtivos} />
 
             <div className="container">
                 <h1 className="titulo-dourado title">💎 Acompanhantes</h1>
                 <div className="divisor-luxo"></div>
 
+                {/* MENSAGEM DE EXPANSÃO (Agora com classes CSS) */}
+                {!encontrouNaCidade && cidadeUsuario && (
+                    <div className="aviso-expansao">
+                        <i className="bi bi-geo-alt"></i>
+                        <p>
+                            Ainda não temos modelos nessa categoria em <strong>{cidadeUsuario}</strong>.<br/>
+                            Estamos expandindo e em breve chegaremos na sua região!
+                            <span className="sub-texto">Enquanto isso, confira modelos em destaque que atendem em outras regiões:</span>
+                        </p>
+                    </div>
+                )}
                 <div className="grid-modelos">
-                    {modelosExibidos.length > 0 ? (
-                        modelosExibidos.map(modelo => (
-                            <CardModelo key={modelo.id} modelo={modelo} />
-                        ))
-                    ) : (
-                        <div style={{
-                            gridColumn: "1 / -1",
-                            width: '100%',
-                            minHeight: "200px",
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            flexDirection: 'column' //
-                        }}>
-                            <p style={{color: '#fff', textAlign: 'center', padding: '50px'}}>
-                                Nenhum resultado encontrado para esta categoria.<br/>Tente uma nova combinação.
-
-                            </p>
-                        </div>
-                    )}
+                    {modelosExibidos.map(modelo => <CardModelo key={modelo.id} modelo={modelo} />)}
                 </div>
 
                 {totalPaginas > 1 && (
                     <div className="paginacao">
-                        <button
-                            disabled={paginaAtual === 1}
-                            onClick={() => { setPaginaAtual(prev => prev - 1); window.scrollTo(0,0); }}
-                        >
-                            Anterior
-                        </button>
+                        <button disabled={paginaAtual === 1} onClick={() => { setPaginaAtual(p => p - 1); window.scrollTo(0,0); }}>Anterior</button>
                         <span className="info-paginas">Página {paginaAtual} de {totalPaginas}</span>
-                        <button
-                            disabled={paginaAtual === totalPaginas}
-                            onClick={() => { setPaginaAtual(prev => prev + 1); window.scrollTo(0,0); }}
-                        >
-                            Próxima
-                        </button>
+                        <button disabled={paginaAtual === totalPaginas} onClick={() => { setPaginaAtual(p => p + 1); window.scrollTo(0,0); }}>Próxima</button>
                     </div>
                 )}
             </div>

@@ -32,7 +32,7 @@ export const modelosData = [
     { id: 31, nome: "Maicon", genero: "masculino", trans: false, idade: 26, cidade: "Porto Alegre", categoria: "SIMPLE", estrelas: 5 , whatsapp:"5511555"},
     { id: 32, nome: "Pedro", genero: "masculino", trans: false, idade: 26, cidade: "Porto Alegre", categoria: "ESSENCIAL", estrelas: 5 , whatsapp:"5511555"},
     { id: 33, nome: "Pedro", genero: "masculino", trans: true, idade: 26, cidade: "Porto Alegre", categoria: "BASIC", estrelas: 5 , whatsapp:"5511555"},
-    { id: 34, nome: "Carolina", genero: "feminino", trans: false, idade: 31, cidade: "São Paulo", categoria: "BASCI", estrelas: 5 , whatsapp:"5511555"},
+    { id: 34, nome: "Carolina", genero: "feminino", trans: false, idade: 31, cidade: "São Paulo", categoria: "BASIC", estrelas: 5 , whatsapp:"5511555"},
     { id: 35, nome: "Beatriz", genero: "feminino", trans: false, idade: 29, cidade: "Rio de Janeiro", categoria: "BASIC", estrelas: 5 , whatsapp:"5511555"},
     { id: 36, nome: "Laura", genero: "feminino", trans: false,idade: 25, cidade: "Belo Horizonte", categoria: "BASIC", estrelas: 5 , whatsapp:"5511555"},
     { id: 37, nome: "Júlia", genero: "feminino", trans: false, idade: 28, cidade: "Curitiba", categoria: "BASIC", estrelas: 5 , whatsapp:"5511555"},

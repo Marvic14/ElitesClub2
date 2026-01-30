@@ -10,22 +10,40 @@ export const Filters = ({ onFilterChange, filtrosAtivos }) => {
     useEffect(() => {
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition(async (position) => {
-                const { latitude, longitude } = position.coords;
+                    const { latitude, longitude } = position.coords;
 
-                try {
-                    const response = await fetch(
-                        `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=pt`
-                    );
-                    const data = await response.json();
-                    setCidade(data.city || data.principalSubdivision || "Localização desconhecida");
-                } catch (error) {
-                    setCidade("São Paulo, SP");
+                    try {
+                        const response = await fetch(
+                            `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=pt`
+                        );
+                        const data = await response.json();
+
+                        // Ajuste: Pegamos o valor uma única vez
+                        const cidadeDetectada = data.city || data.principalSubdivision || "São Paulo";
+
+                        setCidade(cidadeDetectada);
+                        onFilterChange('localizacao', cidadeDetectada);
+                    } catch (error) {
+                        // Importante: Se a API falhar, avisamos o pai também!
+                        const padrao = "São Paulo";
+                        setCidade(padrao);
+                        onFilterChange('localizacao', padrao);
+                    }
+                }, () => {
+                    // Se o usuário negar o GPS
+                    const padrao = "São Paulo";
+                    setCidade(padrao);
+                    onFilterChange('localizacao', padrao);
+                },
+                {
+                    enableHighAccuracy: false,
+                    timeout: 4000,
+                    maximumAge: 3600000
                 }
-            }, () => {
-                setCidade("Permita acessar sua localização");
-            });
+            );
         }
     }, []);
+
 
     return (
         <section className={`filtros-container ${isOpen ? 'open' : ''}`}>
