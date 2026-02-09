@@ -46,6 +46,25 @@ body .web-aplication .site-bg {
   pointer-events: none;
   background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0.18) 15%), linear-gradient(to bottom, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.22));
 }
+body .web-aplication.auth-mode {
+  max-width: 100% !important;
+  width: 100vw !important;
+  min-height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background-image: none !important;
+  background-color: #000 !important;
+}
+body .web-aplication.auth-mode .site-bg {
+  display: none !important;
+}
+body .web-aplication.auth-mode {
+  overflow-y: auto !important;
+  display: block;
+}
+body .web-aplication.auth-mode section {
+  margin-top: 0 !important;
+}
 
 /*  Configurações do ASIDE (MENU LATERAL) */
 aside {

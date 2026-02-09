@@ -1,0 +1,138 @@
+.register-page {
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-image: url("./img/login-background.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+  padding: 60px 20px;
+  box-sizing: border-box;
+}
+
+.register-wrapper {
+  width: 100%;
+  max-width: 800px;
+  background: #f8f5ed;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.register-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  gap: 20px;
+  box-sizing: border-box;
+}
+.register-content h1 {
+  margin: 0;
+  color: #6b4a2b;
+  font-size: 28px;
+}
+.register-content p {
+  margin: 0;
+  color: #8c7a68;
+  font-size: 16px;
+}
+
+.logo-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.logo-area span {
+  color: #a6783b;
+  font-weight: bold;
+}
+
+.register-form {
+  width: 100%;
+}
+.register-form .input-group {
+  margin-bottom: 20px;
+  width: 100%;
+}
+.register-form .input-group label {
+  display: block;
+  font-size: 14px;
+  color: #6b4a2b;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.register-form .input-group input, .register-form .input-group .custom-select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+  box-sizing: border-box;
+  display: block;
+}
+.register-form .input-row {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+.register-form .input-row .input-group {
+  flex: 1;
+  min-width: 0;
+}
+.register-form .btn-register {
+  display: block;
+  margin: 20px auto 0 auto;
+  width: 60%;
+  padding: 16px;
+  background: linear-gradient(90deg, #caa15a, #a6783b);
+  box-shadow: 0 0.5px 5px #372301;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.login-link {
+  margin-top: 25px;
+  text-align: center;
+  color: #8c7a68;
+}
+.login-link a {
+  color: #a6783b;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) and (max-width: 768px) {
+  .register-page {
+    padding: 0;
+  }
+}
+@media (max-width: 768px) {
+  .register-wrapper {
+    border-radius: 0;
+    min-height: 100vh;
+    box-shadow: none;
+  }
+}
+@media (max-width: 768px) and (max-width: 480px) {
+  .register-content {
+    padding: 30px 20px;
+  }
+}
+@media (max-width: 768px) and (max-width: 600px) {
+  .register-content .input-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+/*# sourceMappingURL=Register.css.map */

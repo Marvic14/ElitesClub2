@@ -1,0 +1,156 @@
+$gold: #caa15a;
+$gold-dark: #a6783b;
+$text-main: #6b4a2b;
+$bg-card: #f8f5ed;
+
+.register-page {
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-image: url("./img/login-background.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+  padding: 60px 20px;
+  box-sizing: border-box; // Isso garante que o padding não estoure a tela
+
+}
+
+.register-wrapper {
+  width: 100%;
+  max-width: 800px;
+  background: $bg-card;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  border-radius: 20px;
+  display: flex; // Adicionado para garantir que o conteúdo interno se alinhe
+  flex-direction: column;
+}
+
+.register-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  gap: 20px;
+  box-sizing: border-box; // Garante que o padding interno não empurre o form para fora
+  h1 {
+    margin: 0;
+    color: #6b4a2b; // Sua cor original restaurada
+    font-size: 28px;
+  }
+
+  p {
+    margin: 0;
+    color: #8c7a68; // Sua cor original restaurada
+    font-size: 16px;
+  }
+}
+
+.logo-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  span {
+    color: $gold-dark; // Sua cor original restaurada
+    font-weight: bold;
+  }
+}
+
+
+
+.register-form {
+  width: 100%;
+
+  .input-group {
+    margin-bottom: 20px;
+    width: 100%;
+
+    label {
+      display: block;
+      font-size: 14px;
+      color: $text-main;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    input, .custom-select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background: #fff;
+      box-sizing: border-box; // ESSENCIAL: Resolve o corte lateral do input
+      display: block;
+    }
+  }
+
+  .input-row {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+
+    .input-group {
+      flex: 1;
+      min-width: 0; // Impede que o input empurre a borda do card
+    }
+  }
+
+  .btn-register {
+    display:block;
+    margin: 20px auto 0 auto;
+    width: 60%;
+    padding: 16px;
+    background: linear-gradient(90deg, $gold, $gold-dark);
+    box-shadow: 0 0.5px 5px #372301;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
+
+.login-link {
+  margin-top: 25px;
+  text-align: center;
+  color: #8c7a68;
+  a { color: $gold-dark; font-weight: bold; text-decoration: none; }
+}
+
+
+// Ajuste para mobile: remove arredondamento e garante 100% de largura
+@media (max-width: 768px) {
+
+  .register-page{
+    @media (max-width: 768px) {
+      padding: 0;
+    }
+  }
+
+  .register-wrapper {
+    border-radius: 0;
+    min-height: 100vh;
+    box-shadow: none;
+  }
+
+  .register-content{
+    // Ajuste de respiro para mobile
+    @media (max-width: 480px) {
+      padding: 30px 20px;
+    }
+
+    .input-row{
+      // Ajuste para mobile: faz os inputs ficarem um embaixo do outro
+      @media (max-width: 600px) {
+        flex-direction: column;
+        gap: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,177 @@
+// ---------------- VARIÁVEIS ----------------
+$gold: #caa15a;
+$gold-dark: #a6783b;
+$text-main: #6b4a2b;
+$text-muted: #8c7a68;
+$border: #ddd;
+
+// ---------------- LAYOUT BASE ----------------
+.login-page {
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #000;
+  overflow: hidden;
+}
+
+// ---------------- CONTAINER PRINCIPAL ----------------
+.login-wrapper {
+  width: 100%;
+  height: 100%;
+  max-width: 1400px;
+  max-height: 900px;
+
+  display: flex;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #f8f5ed;
+}
+
+// ---------------- PAINEL ESQUERDO ----------------
+.login-panel {
+  width: 45%;
+  padding: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .login-content {
+    width: 100%;
+    max-width: 420px;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 22px;
+      font-weight: 600;
+      color: $gold-dark;
+      margin-bottom: 40px;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: $text-main;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: $text-muted;
+      margin-bottom: 30px;
+    }
+
+    form {
+      label {
+        display: block;
+        font-size: 14px;
+        color: $text-main;
+        margin-bottom: 6px;
+      }
+
+      input {
+        width: 100%;
+        padding: 14px;
+        border-radius: 12px;
+        border: 1px solid $border;
+        margin-bottom: 18px;
+        font-size: 14px;
+      }
+
+      .options {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        margin-bottom: 25px;
+
+        a {
+          color: $gold-dark;
+          text-decoration: none;
+        }
+
+        .remember {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+      }
+
+      button {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(90deg, $gold, $gold-dark);
+        color: #fff;
+        font-size: 15px;
+        cursor: pointer;
+        transition: opacity 0.3s;
+
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+    }
+
+    .request-access {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 30px;
+      font-size: 14px;
+      color: $text-muted;
+
+      span {
+        flex: 1;
+        height: 1px;
+        background: $border;
+      }
+
+      a {
+        color: $gold-dark;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+// ---------------- PAINEL DIREITO ----------------
+.image-panel {
+  width: 55%;
+  background-image: url("/img/login-background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+  }
+}
+
+// ---------------- RESPONSIVO ----------------
+@media (max-width: 900px) {
+  .login-wrapper {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 0;
+  }
+
+  .image-panel {
+    display: none;
+  }
+
+  .login-panel {
+    width: 100%;
+    padding: 40px;
+  }
+}
