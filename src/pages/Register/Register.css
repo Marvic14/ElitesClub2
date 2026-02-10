@@ -53,6 +53,10 @@
   color: #a6783b;
   font-weight: bold;
 }
+.logo-area img {
+  width: 50px;
+  height: auto;
+}
 
 .register-form {
   width: 100%;

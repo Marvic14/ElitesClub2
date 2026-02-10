@@ -9,7 +9,7 @@ export default function Register() {
                 <div className="register-content">
                     <div className="logo-title-subtitle">
                         <div className="logo-area">
-                            <span style={{ fontSize: "45px" }}>🍒</span>
+                            <img src={"/img/cereja.png"} alt="Cereja" />
                             <span style={{ fontSize: "25px", marginBottom: "50px" }}>Elites Club</span>
                         </div>
 
@@ -23,8 +23,8 @@ export default function Register() {
 
                         </div>
                         <div className="input-group">
-                            <label>Nome De Guerra</label>
-                            <input type="text" placeholder="Como seus clientes te conhecerão?" />
+                            <label>Como gostaria de ser chamada(o)?</label>
+                            <input type="text" placeholder="Como seus clientes te conhecerão? / Nome de usuário" />
 
                         </div>
 

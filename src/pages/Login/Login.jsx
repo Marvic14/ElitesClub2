@@ -1,5 +1,6 @@
 import "./Login.scss";
 import { Link } from "react-router-dom";
+import React from "react";
 
 export default function Login() {
     return (
@@ -10,7 +11,9 @@ export default function Login() {
                 <div className="login-content">
 
                     <div className="logo">
-                        <span style={{ fontSize: "35px" }}>🍒</span><span>Elites Club</span></div>
+                        <img src={"/img/cereja.png"} alt="Cereja" />
+                        <span>Elites Club</span>
+                    </div>
 
                     <h1>Área exclusiva para membros e modelos</h1>
                     <p className="subtitle">Bem-vindo ao ambiente exclusivo.</p>
