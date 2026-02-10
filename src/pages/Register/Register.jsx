@@ -19,7 +19,13 @@ export default function Register() {
                     <form className="register-form">
                         <div className="input-group">
                             <label>Nome Completo</label>
-                            <input type="text" placeholder="Como deseja ser chamado" />
+                            <input type="text" placeholder="Nome Completo" />
+
+                        </div>
+                        <div className="input-group">
+                            <label>Nome De Guerra</label>
+                            <input type="text" placeholder="Como seus clientes te conhecerão?" />
+
                         </div>
 
                         <div className="input-row">

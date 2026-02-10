@@ -75,7 +75,7 @@ export const Home = () => {
                             <img src="/img/woman2.svg" alt="Modelo 2"/>
                             <div className="div-botao">
                                 <h1>Sua carreira<br/>no topo!</h1>
-                                <button className="botao-dourado">Torne-se modelo</button>
+                                <Link to="/cadastro" className="botao-dourado" style={{ textDecoration: 'none'}}>Torne-se modelo</Link>
                             </div>
                         </div>
                     </div>
